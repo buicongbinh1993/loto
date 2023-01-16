@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lô tô vui xuân</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    .title {
+      color: #1616ff;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .items {
+      display: flex;
+    }
+
+    .items .item {
+      width: 11.1111111111%;
+      border: 1px solid #fff;
+      background-color: #ededed;
+      line-height: 2.5;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #d7d7d7;
+    }
+
+    .items .item.active {
+      background-color: #ef5f78;
+      color: #fff;
+    }
+
+    .items-selected {
+      display: flex;
+    }
+
+    .items-selected .item-selected {
+      width: 10%;
+      line-height: 2.32;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #35ff35;
+      border-radius: 50%;
+      margin-left: 5px;
+      margin-top: 5px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center title">Lô tô vui xuân</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-10">
+        <div class="row">
+          <div class="col-6 left-content">
+            <div class="row items"></div>
+          </div>
+          <div class="col-6">
+            <div class="row items-selected"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="row mt-3 btn-action">
+        <div class="col"></div>
+        <div class="col-2">
+          <button type="button" class="btn btn-primary" onclick="randomNum()">Quay số tự động</button>
+        </div>
+        <div class="col-2">
+          <button type="button" class="btn btn-primary" onclick="reset()">Thiết lập lại</button>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script>
+  let arrNum = [{ num: 90, isSelected: false }, { num: 10, isSelected: false }, { num: 20, isSelected: false }, { num: 30, isSelected: false }, { num: 40, isSelected: false }, { num: 50, isSelected: false }, { num: 60, isSelected: false }, { num: 70, isSelected: false }, { num: 80, isSelected: false },
+  { num: 1, isSelected: false }, { num: 11, isSelected: false }, { num: 21, isSelected: false }, { num: 31, isSelected: false }, { num: 41, isSelected: false }, { num: 51, isSelected: false }, { num: 61, isSelected: false }, { num: 71, isSelected: false }, { num: 81, isSelected: false },
+  { num: 2, isSelected: false }, { num: 12, isSelected: false }, { num: 22, isSelected: false }, { num: 32, isSelected: false }, { num: 42, isSelected: false }, { num: 52, isSelected: false }, { num: 62, isSelected: false }, { num: 72, isSelected: false }, { num: 82, isSelected: false },
+  { num: 3, isSelected: false }, { num: 13, isSelected: false }, { num: 23, isSelected: false }, { num: 33, isSelected: false }, { num: 43, isSelected: false }, { num: 53, isSelected: false }, { num: 63, isSelected: false }, { num: 73, isSelected: false }, { num: 83, isSelected: false },
+  { num: 4, isSelected: false }, { num: 14, isSelected: false }, { num: 24, isSelected: false }, { num: 34, isSelected: false }, { num: 44, isSelected: false }, { num: 54, isSelected: false }, { num: 64, isSelected: false }, { num: 74, isSelected: false }, { num: 84, isSelected: false },
+  { num: 5, isSelected: false }, { num: 15, isSelected: false }, { num: 25, isSelected: false }, { num: 35, isSelected: false }, { num: 45, isSelected: false }, { num: 55, isSelected: false }, { num: 65, isSelected: false }, { num: 75, isSelected: false }, { num: 85, isSelected: false },
+  { num: 6, isSelected: false }, { num: 16, isSelected: false }, { num: 26, isSelected: false }, { num: 36, isSelected: false }, { num: 46, isSelected: false }, { num: 56, isSelected: false }, { num: 66, isSelected: false }, { num: 76, isSelected: false }, { num: 86, isSelected: false },
+  { num: 7, isSelected: false }, { num: 17, isSelected: false }, { num: 27, isSelected: false }, { num: 37, isSelected: false }, { num: 47, isSelected: false }, { num: 57, isSelected: false }, { num: 67, isSelected: false }, { num: 77, isSelected: false }, { num: 87, isSelected: false },
+  { num: 8, isSelected: false }, { num: 18, isSelected: false }, { num: 28, isSelected: false }, { num: 38, isSelected: false }, { num: 48, isSelected: false }, { num: 58, isSelected: false }, { num: 68, isSelected: false }, { num: 78, isSelected: false }, { num: 88, isSelected: false },
+  { num: 9, isSelected: false }, { num: 19, isSelected: false }, { num: 29, isSelected: false }, { num: 39, isSelected: false }, { num: 49, isSelected: false }, { num: 59, isSelected: false }, { num: 69, isSelected: false }, { num: 79, isSelected: false }, { num: 89, isSelected: false },
+  ];
+  let arrNumRandom = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+    51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+    61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
+    71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
+    81, 82, 83, 84, 85, 86, 87, 88, 89, 90];
+  let arrSelected = [];
+  let arrNumRandomRemaining = [];
+  let isAdmin = false;
+  if (!localStorage.getItem("isAdmin"))
+    $(".btn-action").css('display', 'none');
+
+  if (localStorage.getItem("arrNum"))
+    arrNum = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("arrNum"))));
+
+  if (localStorage.getItem("arrSelected"))
+    arrSelected = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("arrSelected"))));
+
+  if (localStorage.getItem("arrNumRandomRemaining"))
+    arrNumRandomRemaining = JSON.parse(JSON.parse(JSON.stringify(localStorage.getItem("arrNumRandomRemaining"))));
+  else
+    arrNumRandomRemaining = arrNumRandom;
+
+  arrNum.forEach(item => {
+    let ele = "<div class='item item-" + item.num + " text-center" + (item.isSelected ? " active" : "") + "'>" + item.num + "</div>";
+    $(".items").append(ele);
+  });
+
+  arrSelected.forEach(v => {
+    let eleS = "<div class='item-selected item-selected" + v + " text-center'>" + v + "</div>";
+    $(".items-selected").append(eleS);
+  });
+
+  function randomNum() {
+    if (arrNumRandomRemaining.length > 0) {
+      const numSelected = getRandom(arrNumRandomRemaining);
+      arrSelected.push(numSelected);
+      arrNum.forEach(item => {
+        if (item.num == numSelected) {
+          item.isSelected = true;
+        }
+      })
+
+      if (!$(".item-" + numSelected).hasClass("active")) {
+        $(".item-" + numSelected).addClass("active");
+      }
+
+      $(".item-selected").remove();
+      arrSelected.forEach(v => {
+        let eleS = "<div class='item-selected item-selected-" + v + " text-center'>" + v + "</div>";
+        $(".items-selected").append(eleS);
+      });
+
+      const index = arrNumRandomRemaining.indexOf(numSelected);
+      arrNumRandomRemaining.splice(index, 1);
+      localStorage.setItem("arrNum", JSON.stringify(arrNum));
+      localStorage.setItem("arrSelected", JSON.stringify(arrSelected));
+      localStorage.setItem("arrNumRandomRemaining", JSON.stringify(arrNumRandomRemaining));
+    }
+
+  }
+
+  function reset() {
+    arrNum.forEach(item => {
+      item.isSelected = false;
+    })
+
+    $(".item").removeClass("active");
+
+    localStorage.removeItem("arrNum");
+    arrSelected = [];
+    $(".item-selected").remove();
+    localStorage.removeItem("arrSelected");
+    arrNumRandomRemaining = [];
+    localStorage.removeItem("arrNumRandomRemaining");
+    arrNumRandomRemaining = arrNumRandom;
+  }
+
+  function getRandom(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+</script>
+
+</html>
